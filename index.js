@@ -1,5 +1,21 @@
+var http = require('http');
+var fs = require('fs');
 var spawn = require('child_process').spawn;
 var answers = require('./answers.js');
+
+var server = http.createServer(function(req, res) {
+  if (req.method === 'POST') {
+    console.log('POST');
+  } else {
+    console.log('GET');
+  }
+});
+
+port = 3000;
+host = '127.0.0.1';
+server.listen(port, host);
+console.log('Listening');
+
 
 // spawn gcc
 var compile = spawn('gcc', ['-std=c11', './test.c']);
